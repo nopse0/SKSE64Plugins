@@ -26,6 +26,7 @@
 #include "Utilities.h"
 
 #include <unordered_set>
+#include <format>
 
 extern ActorUpdateManager				g_actorUpdateManager;
 extern OverlayInterface					g_overlayInterface;

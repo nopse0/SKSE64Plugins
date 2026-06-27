@@ -1,5 +1,7 @@
 #pragma once
 
+#if 0
+
 #include <memory>
 #include <cstdarg>
 
@@ -101,3 +103,5 @@ inline void _DMESSAGE(const char* fmt, const T&... args)
 {
 	gLog.Log(DebugLog::kLevel_DebugMessage, fmt, args...);
 }
+
+#endif

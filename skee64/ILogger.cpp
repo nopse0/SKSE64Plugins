@@ -1,3 +1,5 @@
+#if 0
+
 #include "ILogger.h"
 
 #include <shlobj.h>
@@ -28,3 +30,5 @@ void DebugLog::SetLogLevel(LogLevel logLevel)
 	if(m_logger)
 		m_logger->set_level(gSpdLogLevelMap[logLevel]);
 }
+
+#endif

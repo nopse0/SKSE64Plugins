@@ -54,7 +54,7 @@
 #include "PapyrusCharGen.h"
 #include "SKEEHooks.h"
 
-DebugLog	gLog;
+// DebugLog	gLog;
 
 PluginHandle					g_pluginHandle = kPluginHandle_Invalid;
 
@@ -283,7 +283,8 @@ std::string SKEE64GetConfigOption(const char * section, const char * key)
 template<typename T>
 const char * SKEE64GetTypeFormatting(T * dataOut)
 {
-	return false;
+	return nullptr;
+	//return false;
 }
 
 template<> const char * SKEE64GetTypeFormatting(double * dataOut) { return "%lf"; }
@@ -621,7 +622,7 @@ void SKSEMessageHandler(SKSEMessagingInterface::Message * message)
 
 bool SKSEPlugin_Query(const SKSEInterface* skse)
 {
-	SInt32	logLevel = DebugLog::kLevel_DebugMessage;
+	auto logLevel = IDebugLog::kLevel_DebugMessage;
 	SKEE64GetConfigValue("Debug", "iLogLevel", &logLevel);
 
 #if STORE_VERSION == RUNTIME_TYPE_BETHESDA
@@ -631,7 +632,7 @@ bool SKSEPlugin_Query(const SKSEInterface* skse)
 	if (logLevel >= 0)
 		gLog.OpenRelative(CSIDL_MYDOCUMENTS, "\\My Games\\Skyrim Special Edition GOG\\SKSE\\skee64.log");
 #endif
-	gLog.SetLogLevel((DebugLog::LogLevel)logLevel);
+	gLog.SetLogLevel(logLevel);
 
 	// store plugin handle so we can identify ourselves later
 	g_pluginHandle = skse->GetPluginHandle();
